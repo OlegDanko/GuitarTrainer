@@ -12,14 +12,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_library(PORTAUDIO_LIB NAMES portaudio)
+find_library(QWT_LIB NAMES qwt)
+find_library(FFTW_LIB NAMES fftw3)
 
-message("Lib path: ${PORTAUDIO_LIB}")
+set(LIBS
+    Qt${QT_VERSION_MAJOR}::Widgets
+    ${PORTAUDIO_LIB}
+    ${QWT_LIB}
+    ${FFTW_LIB}
+)
+
+message("Lib path: ${FFTW_LIB}")
 
 set(PROJECT_SOURCES
         main.cpp
         MainWindow.cpp
         MainWindow.hpp
         MainWindow.ui
+        MyWidget.hpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -45,7 +55,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(trainer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${PORTAUDIO_LIB})
+target_link_libraries(trainer ${LIBS})
 
 set_target_properties(trainer PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
