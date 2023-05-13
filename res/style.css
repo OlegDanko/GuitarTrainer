@@ -1,0 +1,40 @@
+QPushButton#roundbg {
+    border: none;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: none;
+    color: white;
+}
+QPushButton#roundbg:pressed {
+    background-image: url(:/img/circle.png);
+}
+QPushButton#roundbg:hover:!pressed {
+    background-image: url(:/img/circle_hover.png);
+}
+QWidget#fret_board {
+    background: brown;
+    margin: 10px;
+/*    padding: 10px;*/
+
+}
+QWidget#fret_zero {
+    border: none;
+    background: black;
+}
+QWidget#fret {
+    border-left: 2px solid white;
+    background: transparent;
+}
+QWidget#fret_dot {
+    border-left: 2px solid white;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url(:/img/fret_dot.png);
+}
+QWidget#fret_double_dot {
+    border-left: 2px solid white;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-image: url(:/img/fret_double_dot.png);
+}
+

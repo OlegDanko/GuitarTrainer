@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/fret_dot.png</file>
+        <file>img/fret_double_dot.png</file>
+        <file>img/circle_hover.png</file>
+        <file>img/circle.png</file>
+        <file>style.css</file>
+    </qresource>
+</RCC>

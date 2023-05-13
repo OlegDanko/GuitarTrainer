@@ -1,0 +1,3 @@
+[submodule "deps/qwt"]
+	path = deps/qwt
+	url = https://github.com/opencor/qwt
