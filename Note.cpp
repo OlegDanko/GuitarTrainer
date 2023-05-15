@@ -120,6 +120,18 @@ Note Note::operator-(int val) {
     return *this + (-val);
 }
 
+bool Note::operator==(const Note &val) const {
+    return tone == val.tone && octave == val.octave;
+}
+
+bool Note::operator!=(const Note &val) const {
+    return !((*this) == val);
+}
+
+int Note::operator-(const Note &note) const {
+    return (octave - note.octave) * 12 + (tone - note.tone);
+}
+
 Note &operator++(Note &val) {
     if(++(val.tone) == A)
         ++(val.octave);
@@ -138,4 +150,10 @@ std::string std::to_string(const Note &val) {
 
 std::ostream &operator<<(std::ostream &str, const Note &val) {
     return str << std::to_string(val);
+}
+
+Note Note::operator++(int) {
+    auto val = *this;
+    ++(*this);
+    return val;
 }

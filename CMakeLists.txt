@@ -11,18 +11,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Boost COMPONENTS atomic)
 find_library(PORTAUDIO_LIB NAMES portaudio)
 find_library(QWT_LIB NAMES qwt)
 find_library(FFTW_LIB NAMES fftw3)
 
 set(LIBS
     Qt${QT_VERSION_MAJOR}::Widgets
+    ${Boost_LIBRARIES}
     ${PORTAUDIO_LIB}
     ${QWT_LIB}
     ${FFTW_LIB}
 )
-
-message("Lib path: ${QT_VERSION_MAJOR}")
 
 set(PROJECT_SOURCES
         main.cpp
@@ -30,6 +30,9 @@ set(PROJECT_SOURCES
         FretWidget.cpp
         DrawableWidgetBase.cpp
         FretBoardWidget.cpp
+        ToneMapper.cpp
+        AudioSynthesizer.cpp
+        DelFn.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

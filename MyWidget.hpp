@@ -65,12 +65,9 @@ public:
 
         timer->setSingleShot(true);
         connect(this, &MyWidget::replotDone, [this]{
-//            std::cout << "printed" << std::endl;
-//            replot();
             timer->start(2);
         });
         connect(timer, &QTimer::timeout, [this]{
-//            std::cout << "printed" << std::endl;
             std::lock_guard lk(mtx);
             replot();
         });

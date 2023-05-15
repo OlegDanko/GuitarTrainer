@@ -37,8 +37,12 @@ struct Note {
     Note(ETone tone = Tones_Count, int octave = -1);
     Note(const std::string& str);
     static Note none();
+    Note operator++(int);
     Note operator+(int val);
     Note operator-(int val);
+    int operator-(const Note& note) const;
+    bool operator==(const Note& val) const;
+    bool operator!=(const Note& val) const;
 };
 
 Note& operator++(Note& val);
