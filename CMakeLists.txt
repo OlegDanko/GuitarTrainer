@@ -30,6 +30,7 @@ set(PROJECT_SOURCES
         FretWidget.cpp
         DrawableWidgetBase.cpp
         FretBoardWidget.cpp
+        FretBoard.cpp
         ToneMapper.cpp
         AudioSynthesizer.cpp
         DelFn.cpp

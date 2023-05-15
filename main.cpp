@@ -28,9 +28,12 @@ int pa_output_callback(const void *input,
     return 0;
 }
 
+Q_DECLARE_METATYPE(Note);
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    qRegisterMetaType<Note>();
+
     QFile styleFile(":/style.css");
     styleFile.open(QFile::ReadOnly);
     QString style(styleFile.readAll());
@@ -46,6 +49,8 @@ int main(int argc, char *argv[])
 
     ToneMapper tone_mapper(Note{"E2"}, Note{"F5"});
     AudioSynthesizer synth(tone_mapper, 512);
+    AudioSynthesizer::connect(&synth, &AudioSynthesizer::noteChangedSignal,
+                              &board, &FretBoard::noteSet);
 
     std::atomic_bool running{true};
     std::thread t;
@@ -68,13 +73,13 @@ int main(int argc, char *argv[])
         err = Pa_StartStream( stream );
         if( err != paNoError ) return -1;
 
-        t = std::thread([&synth]{
+        t = std::thread([&]{
             using namespace std::chrono_literals;
 
             std::vector<Note> sequence{{A, 4}, {B, 4}, {C, 4}, {D, 4}};
             auto i = 0;
             auto start = std::chrono::steady_clock::now();
-            while(true) {
+            while(running) {
                 synth.append_note(sequence.at(i++), SAMPLE_RATE/2);
                 i %= sequence.size();
                 start += 1s;

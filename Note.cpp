@@ -157,3 +157,11 @@ Note Note::operator++(int) {
     ++(*this);
     return val;
 }
+
+std::size_t std::hash<Note>::operator()(const Note &val) const {
+    union {
+        std::array<int, 2> to;
+        size_t hash;
+    } hash_union{.to = {val.tone, val.octave}};
+    return hash_union.hash;
+}

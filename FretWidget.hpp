@@ -13,7 +13,7 @@ class FretWidget : public DrawableWidgetBase
 {
     Q_OBJECT
 
-    std::vector<QWidget*> strings;
+    std::vector<QPushButton*> strings;
     std::vector<bool> states;
     void setStringsRangeState(size_t string_from, size_t string_to, bool state);
 public:

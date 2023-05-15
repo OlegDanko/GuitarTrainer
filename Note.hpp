@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include <functional>
+#include <array>
 
 enum ETone {
     A = 0,
@@ -50,4 +52,7 @@ Note& operator--(Note& val);
 std::ostream& operator<<(std::ostream& str, const Note& val);
 namespace std {
 string to_string(const Note& val);
+template<> struct hash<Note> {
+size_t operator()(const Note& val) const;
+};
 }

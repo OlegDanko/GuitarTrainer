@@ -63,7 +63,7 @@ void FretWidget::setStringsStates(const std::vector<bool>& states_new) {
 
 void FretWidget::setStringState(size_t string_num, bool state) {
     states.at(string_num) = state;
-//    strings.at(string_num)->setChecked(state);
+    strings.at(string_num)->setDown(state);
 }
 
 void FretWidget::setStringsRangeState(size_t string_from, size_t string_to, bool state) {
