@@ -5,10 +5,7 @@
 #include <array>
 
 enum ETone {
-    A = 0,
-    As,
-    B,
-    C,
+    C = 0,
     Cs,
     D,
     Ds,
@@ -17,6 +14,9 @@ enum ETone {
     Fs,
     G,
     Gs,
+    A,
+    As,
+    B,
     Tones_Count
 };
 

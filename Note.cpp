@@ -133,13 +133,13 @@ int Note::operator-(const Note &note) const {
 }
 
 Note &operator++(Note &val) {
-    if(++(val.tone) == A)
+    if(++(val.tone) == C)
         ++(val.octave);
     return val;
 }
 
 Note &operator--(Note &val) {
-    if(--(val.tone) == Gs)
+    if(--(val.tone) == B)
         --(val.octave);
     return val;
 }
